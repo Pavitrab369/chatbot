@@ -2,6 +2,10 @@
 
 A minimal Streamlit chat app that talks to Groq's hosted Llama models. It keeps a running conversation history and replies using `llama-3.3-70b-versatile` with a helpful-assistant system prompt.
 
+## Live Demo
+
+Try the app here: https://chatbot-f2r54zccchejzl5yfljgod.streamlit.app/
+
 ## Features
 
 - Streamlit chat UI with message history
