@@ -1,9 +1,15 @@
 from dotenv import load_dotenv
 import streamlit as st
 from langchain_groq import ChatGroq
+import os
 
 # load environment variables from .env file
 load_dotenv()
+
+groq_api_key = st.secrets.get("GROQ_API_KEY") or os.getenv("GROQ_API_KEY")
+if not groq_api_key:
+    st.error("❌ GROQ_API_KEY not found. Check your .env file.")
+    st.stop()
 
 # streamlit page setup
 st.set_page_config(
@@ -25,7 +31,8 @@ for message in st.session_state.chat_history:
 
 llm = ChatGroq(
     model="llama-3.3-70b-versatile",
-    temperature=0.0
+    temperature=0.0,
+    api_key=groq_api_key
 )
 
 user_prompt = st.chat_input("Ask Chatbot ....")
